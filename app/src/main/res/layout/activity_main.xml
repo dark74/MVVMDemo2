@@ -36,5 +36,11 @@
             android:hint="暂未获取信息"
             android:text="@{viewModel.result}" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel::getData}"
+            android:text="点击获取view id" />
+
     </LinearLayout>
 </layout>

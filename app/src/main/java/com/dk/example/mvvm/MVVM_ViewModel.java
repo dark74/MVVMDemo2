@@ -1,6 +1,10 @@
 package com.dk.example.mvvm;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -18,6 +22,7 @@ public class MVVM_ViewModel extends BaseObservable {
     private MVVM_Model mvvm_model;
     String input;
     String result;
+    private Context mCtx;
 
     @Bindable
     public String getResult() {
@@ -30,6 +35,7 @@ public class MVVM_ViewModel extends BaseObservable {
     }
 
     public MVVM_ViewModel(Application application, ActivityMainBinding binding) {
+        this.mCtx = application;
         this.binding = binding;
         mvvm_model = new MVVM_Model();
     }
@@ -48,5 +54,14 @@ public class MVVM_ViewModel extends BaseObservable {
                 setResult("获取信息失败！！！");
             }
         });
+    }
+
+    public void getData(View view) {
+        if (view == null) {
+            Log.d("DK", "View is null");
+            return;
+        }
+
+        Toast.makeText(mCtx, "Onclick View Id:" + view.getId(), Toast.LENGTH_SHORT).show();
     }
 }
